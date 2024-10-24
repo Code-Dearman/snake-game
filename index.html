@@ -29,7 +29,7 @@
 <body>
 
     <header>
-        <h1>Snake Game!</h1>
+        <h1 id="pageTitle">Snake Game!</h1>
     </header>
 
     <main>
@@ -38,23 +38,28 @@
         </div>
     </main>
 
-    <div class="modal" tabindex="-1">
-        <div class="modal-dialog" id="cookiesModal" aria-labelledby="Cookies Modal" aria-hidden="true">
+    <!-- Cookies Modal -->
+    <div class="modal" tabindex="-1" id="cookiesModal" aria-labelledby="Cookies Modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+
             <div class="modal-content">
+
                 <div class="modal-header">
-                    <div class="modal-title">
-
-                    </div>
-                    <div class="modal-body">
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Reject</button>
-                        <button type="button" class="btn btn-primary">Accept</button>
-                    </div>
+                    <h1>Hello</h1>
                 </div>
+
+                <div class="modal-body">
+                    <p>There</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="cookiesAccept">Accept</button>
+                    <button type="button" class="btn btn-secondary" id="cookiesReject" data-bs-dismiss="modal">Reject</button>
+                </div>
+
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -65,6 +70,9 @@
 
     <!-- Snake Scripts -->
     <script src="assets/js/script.js"></script>
+
+    <!-- Modal Scripts -->
+    <script src="assets/js/modalScript.js"></script>
 </body>
 
 </html>

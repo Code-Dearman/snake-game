@@ -1,5 +1,5 @@
 /* font import from GoogleFonts */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 body {
     font-family: "Roboto Mono", monospace;
@@ -20,6 +20,7 @@ main {
 #pageTitle {
     font-family: Orbitron;
     text-align: center;
+    color: #00F6D2;
 }
 
 p {
@@ -33,6 +34,8 @@ p {
     margin: 10px;
 }
 
+
+/* colour palette */
 .p1 {
     background-color: #0D0F17;
 }

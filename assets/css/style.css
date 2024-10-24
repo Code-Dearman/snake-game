@@ -11,10 +11,14 @@
     --textColor: #E5E5E5;
 }
 
-/* ------------------------------------------------body styles */
+/* ------------------------------------------------General styles */
 body {
     font-family: "Roboto Mono", monospace;
     background-color: #0D0F17;
+}
+
+.hide {
+    display: none;
 }
 
 /* ------------------------------------------------canvas area styles */

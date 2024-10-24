@@ -20,7 +20,16 @@ const gameOverModal = new bootstrap.Modal(document.getElementById("gameOverModal
 
 let gameOver = false;
 
-window.onload = function () {
+const newGameButtons = document.querySelectorAll(".newGame");
+
+for (let newGame of newGameButtons) {
+    newGame.addEventListener("click", function(event){
+        playSnake();
+        document.getElementById("newGameButton").classList.add("hide");
+    })
+}
+
+function playSnake() {
     // sets board height and width
     board = document.getElementById("board");
     board.height = total_row * blockSize;
@@ -99,10 +108,7 @@ function update() {
         context.strokeRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
     }
 
-    if (snakeX < 0 
-        || snakeX > total_col *blockSize
-        || snakeY < 0
-        || snakeY > total_row * blockSize) {
+    if (snakeX < 0 || snakeX > total_col * blockSize || snakeY < 0 || snakeY > total_row * blockSize) {
             gameOver = true;
             gameOverModal.show();
         }
@@ -142,8 +148,4 @@ function changeDirection(e) {
 function placeFood() {
     foodX = Math.floor(Math.random() * total_col) * blockSize;
     foodY = Math.floor(Math.random() * total_row) * blockSize;
-
-    while ((foodX === snakeX) && (foodY === foodX)) {
-        placeFood();
-    }
 }

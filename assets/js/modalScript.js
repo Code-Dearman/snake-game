@@ -18,8 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 const cookiesModal = new bootstrap.Modal(document.getElementById("cookiesModal"));
 
-/**Checks whether logData has been accepted on loading the window.*/
-if (localStorage.logData === "false") {
+if (localStorage.logData !== "true") {
     cookiesModal.show();
 }
 

@@ -25,7 +25,11 @@ const newGameButtons = document.querySelectorAll(".newGame");
 for (let newGame of newGameButtons) {
     newGame.addEventListener("click", function(event){
         playSnake();
+        drawBoard();
+        update();
         document.getElementById("newGameButton").classList.add("hide");
+        gameOverModal.hide();
+        console.log("Game Started")
     })
 }
 

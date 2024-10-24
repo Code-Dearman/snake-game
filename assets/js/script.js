@@ -139,5 +139,9 @@ function changeDirection(e) {
 
 function placeFood() {
     foodX = Math.floor(Math.random() * total_col) * blockSize;
-    foodY = Math.floor(Math.random() * total_col) * blockSize;
+    foodY = Math.floor(Math.random() * total_row) * blockSize;
+
+    while ((foodX === snakeX) && (foodY === foodX)) {
+        placeFood();
+    }
 }

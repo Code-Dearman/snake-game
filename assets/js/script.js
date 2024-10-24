@@ -16,6 +16,8 @@ let snakeBody = [];
 let foodX;
 let foodY;
 
+const gameOverModal = new bootstrap.Modal(document.getElementById("gameOverModal"))
+
 let gameOver = false;
 
 window.onload = function () {
@@ -102,13 +104,13 @@ function update() {
         || snakeY < 0
         || snakeY > total_row * blockSize) {
             gameOver = true;
-            alert("Game Over!");
+            gameOverModal.show();
         }
 
     for (let i = 0; i < snakeBody.length; i++) {
         if (snakeX == snakeBody[i][0] && snakeY == snakeBody[i][1]) {
             gameOver = true;
-            alert("Game Over!")
+            gameOverModal.show();
         }
     }
 }

@@ -1,11 +1,23 @@
 /* font import from GoogleFonts */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
+/* ------------------------------------------------Colour variables */
+:root {
+    --primaryBackground: #0D0F17;
+    --secondaryBackground: #1C1F2A;
+    --accentOne: #00F6D2;
+    --accentTwo: #FF0266;
+    --highlightColor: #A9F100;
+    --textColor: #E5E5E5;
+}
+
+/* ------------------------------------------------body styles */
 body {
     font-family: "Roboto Mono", monospace;
     background-color: #0D0F17;
 }
 
+/* ------------------------------------------------canvas area styles */
 main {
     text-align: center;
     display: flex;
@@ -17,25 +29,51 @@ main {
     text-align: center;
 }
 
+
+/* ------------------------------------------------header styles */
 #pageTitle {
     font-family: Orbitron;
     text-align: center;
     color: #00F6D2;
 }
 
-p {
-    font-family: "Roboto Mono", monospace;
+/* ------------------------------------------------modal styles */
+.modal-header {
+   background-color: var(--primaryBackground);
+   border: var(--primaryBackground);
+   color: var(--accentTwo);
 }
 
+.modal-content {
+    background-color: var(--primaryBackground);
+    border: var(--primaryBackground);
+    color: var(--textColor);
+}
 
+.modal-footer {
+    background-color: var(--primaryBackground);
+    border: var(--primaryBackground);
+}
+
+/* ------------------------------------------------Button styles */
+
+.button-accept {
+    background-color: #00F6D2;
+    color: #0D0F17;
+    border: 2px solid #00BFa5;
+}
+
+.button-accept:hover {
+    background-color: #00BFA5;
+}
+
+/* ------------------------------------------------colour palette */
 .palette-item {
     width: 50px;
     height: 50px;
     margin: 10px;
 }
 
-
-/* colour palette */
 .p1 {
     background-color: #0D0F17;
 }
@@ -59,3 +97,5 @@ p {
 .p6{
     background-color: #E5E5E5;
 }
+
+

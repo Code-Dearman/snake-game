@@ -107,15 +107,13 @@ function placeFood() {
     foodY = Math.floor(Math.random() * total_row) * blockSize;
 }
 
+/**the main game running function, updates according to the interval set in playSnake() */
 function update() {
     if (gameOver) {
         return;
     }
 
     drawBoard();
-
-    // context.fillStyle = "black";
-    // context.fillRect(0, 0, board.width, board.height);
 
     context.fillStyle = "red";
     context.fillRect(foodX, foodY, blockSize, blockSize);
@@ -155,11 +153,13 @@ function update() {
         context.strokeRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
     }
 
+    // defines game over rules for hitting walls
     if (snakeX < 0 || snakeX > (total_col * blockSize) - blockSize|| snakeY < 0 || snakeY > (total_row * blockSize) - blockSize) {
             gameOver = true;
             gameOverModal.show();
         }
 
+    // defines game rules for snake hitting snake body
     for (let i = 0; i < snakeBody.length; i++) {
         if (snakeX == snakeBody[i][0] && snakeY == snakeBody[i][1]) {
             gameOver = true;

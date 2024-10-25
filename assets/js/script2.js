@@ -4,9 +4,9 @@ let total_col = 15; //total column number
 let board;
 let context;
 
-// Sets the size of the individual snake blocks
-let snakeX = blockSize * 5;
-let snakeY = blockSize * 5;
+    // Sets the size of the individual snake blocks
+let snakeX;
+let snakeY;
 
 let speedX = 0;
 let speedY = 0;
@@ -16,38 +16,48 @@ let snakeBody = [];
 let foodX;
 let foodY;
 
-const gameOverModal = new bootstrap.Modal(document.getElementById("gameOverModal"))
-
 let gameOver = false;
+
+let gameInterval;
+
+const gameOverModal = new bootstrap.Modal(document.getElementById("gameOverModal"))
 
 const newGameButtons = document.querySelectorAll(".newGame");
 
-for (let newGame of newGameButtons) {
-    newGame.addEventListener("click", function(event){
-        gameOver = false;
-        playSnake();
-        drawBoard();
-        update();
-        document.getElementById("newGameButton").classList.add("hide");
-        gameOverModal.hide();
-        console.log("Game Started")
+for (let newGameButton of newGameButtons) {
+    newGameButton.addEventListener("click", function(e){
+    gameOverModal.hide();
+    playSnake();
     })
 }
 
-
-
 function playSnake() {
-    // sets board height and width
+
+    // sets the variables for a fresh games
+    snakeX = blockSize * 5;
+    snakeY = blockSize * 5;
+    sppedX = 0;
+    speedY = 0;
+    snakeBody = [];
+    gameOver = false;
+
+    //sets the board dimension and context
     board = document.getElementById("board");
     board.height = total_row * blockSize;
     board.width = total_col * blockSize;
     context = board.getContext("2d");
 
+
+    // Place the first food and add a listener for movements
     placeFood();
     document.addEventListener("keyup", changeDirection); //for movements
 
-    // set snake speed
-    setInterval(update, 1000 / 10);
+    // set game interval here
+    if (gameInterval) clearInterval(gameInterval);
+    gameInterval = setInterval(update, 1000 / 10);
+
+    // Draws the starting board
+    drawBoard();
 }
 
 function drawBoard() {
@@ -65,6 +75,35 @@ function drawBoard() {
             context.strokeRect(x, y, blockSize, blockSize)
         }
     }
+}
+
+function changeDirection(e) {
+    if (e.code == "ArrowUp" && speedY != 1) { 
+        // If up arrow key pressed with this condition...
+        // snake will not move in the opposite direction
+        speedX = 0;
+        speedY = -1;
+    }
+    else if (e.code == "ArrowDown" && speedY != -1) {
+        //If down arrow key pressed
+        speedX = 0;
+        speedY = 1;
+    }
+    else if (e.code == "ArrowLeft" && speedX != 1) {
+        //If left arrow key pressed
+        speedX = -1;
+        speedY = 0;
+    }
+    else if (e.code == "ArrowRight" && speedX != -1) { 
+        //If Right arrow key pressed
+        speedX = 1;
+        speedY = 0;
+    }
+}
+
+function placeFood() {
+    foodX = Math.floor(Math.random() * total_col) * blockSize;
+    foodY = Math.floor(Math.random() * total_row) * blockSize;
 }
 
 function update() {
@@ -126,33 +165,4 @@ function update() {
             gameOverModal.show();
         }
     }
-}
-
-function changeDirection(e) {
-    if (e.code == "ArrowUp" && speedY != 1) { 
-        // If up arrow key pressed with this condition...
-        // snake will not move in the opposite direction
-        speedX = 0;
-        speedY = -1;
-    }
-    else if (e.code == "ArrowDown" && speedY != -1) {
-        //If down arrow key pressed
-        speedX = 0;
-        speedY = 1;
-    }
-    else if (e.code == "ArrowLeft" && speedX != 1) {
-        //If left arrow key pressed
-        speedX = -1;
-        speedY = 0;
-    }
-    else if (e.code == "ArrowRight" && speedX != -1) { 
-        //If Right arrow key pressed
-        speedX = 1;
-        speedY = 0;
-    }
-}
-
-function placeFood() {
-    foodX = Math.floor(Math.random() * total_col) * blockSize;
-    foodY = Math.floor(Math.random() * total_row) * blockSize;
 }

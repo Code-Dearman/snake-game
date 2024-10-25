@@ -1,12 +1,13 @@
 let blockSize = 25;
-let total_row = 15; //total row number
-let total_col = 15; //total column number
+let total_row = 10; //total row number
+let total_col = 10; //total column number
 let board;
 let context;
 
-    // Sets the size of the individual snake blocks
+// Sets the size of the individual snake blocks
 let snakeX;
 let snakeY;
+
 
 let speedX = 0;
 let speedY = 0;
@@ -36,7 +37,7 @@ function playSnake() {
     // sets the variables for a fresh games
     snakeX = blockSize * 5;
     snakeY = blockSize * 5;
-    sppedX = 0;
+    speedX = 0;
     speedY = 0;
     snakeBody = [];
     gameOver = false;
@@ -154,7 +155,11 @@ function update() {
         context.strokeRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
     }
 
-    if (snakeX < 0 || snakeX > total_col * blockSize || snakeY < 0 || snakeY > total_row * blockSize) {
+    if (snakeX < 0 
+        || snakeX > (total_col * blockSize) - blockSize
+        || snakeY < 0 
+        || snakeY > (total_row * blockSize) - blockSize
+        ) {
             gameOver = true;
             gameOverModal.show();
         }

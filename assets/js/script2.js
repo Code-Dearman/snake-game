@@ -155,11 +155,7 @@ function update() {
         context.strokeRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
     }
 
-    if (snakeX < 0 
-        || snakeX > (total_col * blockSize) - blockSize
-        || snakeY < 0 
-        || snakeY > (total_row * blockSize) - blockSize
-        ) {
+    if (snakeX < 0 || snakeX > (total_col * blockSize) - blockSize|| snakeY < 0 || snakeY > (total_row * blockSize) - blockSize) {
             gameOver = true;
             gameOverModal.show();
         }
